@@ -12,7 +12,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     
-      <meta name="author" content="John Doe">
+      <meta name="author" content="Simon Tan">
     
     
 
@@ -44,8 +44,8 @@ $ npm -v
 显示版本号：
 $ 3.10.8
 SSH连接Github  本步骤可选，但是为了避免每次访">
-<meta property="og:image" content="http://yoursite.com/./搭建blog环境/Hexo.jpg">
-<meta property="og:updated_time" content="2017-09-08T17:32:24.000Z">
+<meta property="og:image" content="http://yoursite.com/2016/10/25/搭建blog环境/Hexo.jpg">
+<meta property="og:updated_time" content="2017-09-09T02:39:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下使用Hexo和Github搭建静态博客 | AllenTancy">
 <meta name="twitter:description" content="系统环境:
@@ -60,7 +60,7 @@ $ npm -v
 显示版本号：
 $ 3.10.8
 SSH连接Github  本步骤可选，但是为了避免每次访">
-<meta name="twitter:image" content="http://yoursite.com/./搭建blog环境/Hexo.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2016/10/25/搭建blog环境/Hexo.jpg">
     
     
     
@@ -91,10 +91,17 @@ SSH连接Github  本步骤可选，但是为了避免每次访">
     <div class="panel-main__content">
 
         
+        <a href="/" title="link to homepage for AllenTancy"><img src="/images/avatar.jpg" width="80" alt="AllenTancy logo" class="panel-cover__logo logo" /></a>
+        
 
         <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">AllenTancy</a></h1>
         <hr class="panel-cover__divider" />
 
+        
+        <p class="panel-cover__description">
+          贵有恒何必三更起五更睡觉，最无益一日曝十日寒。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
         
 
         <div class="navigation-wrapper">
@@ -166,6 +173,33 @@ classes that you can use:
 
 
 
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Allen-Tancy" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+  
+      <li class="navigation__item">
+        <a href="http://weibo.com/AllenTancy" title="微博">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+  </ul>
+</nav>
+
+
+
         </div>
 
       </div>
@@ -198,7 +232,7 @@ classes that you can use:
           
              &#8226; 标签:
             <font class="tags">
-              <a class="tags-link" href="/tags/环境/">环境</a>
+              <a class="tags-link" href="/tags/搭建环境/">搭建环境</a>
             </font>
           
 
@@ -260,7 +294,7 @@ $ hexo server    #简写 hero s
 $ hexo generate #修改配置或提交更新文章后都需要重新部署，主要是生命public文件夹里面的内容。
 $ hexo deploy   #将更新后的博客上传至你的github空间。
 </code></pre><h2 id="部署主题与优化"><a href="#部署主题与优化" class="headerlink" title="部署主题与优化"></a>部署主题与优化</h2><p>  hexo的结构如下（打开你建立的目录（如~/AllenTancy））：</p>
-<p> <img src="./搭建blog环境/Hexo.jpg" alt="avatar"></p>
+<img src="/2016/10/25/搭建blog环境/Hexo.jpg" alt="hexo的结构" title="hexo的结构">
 <ul>
 <li>.deplog_git:执行hero deploy命令部署到Github上的内容目录</li>
 <li>public：执行hero generate命令，输出的静态网页内容目录</li>
