@@ -45,7 +45,7 @@ $ npm -v
 $ 3.10.8
 SSH连接Github  本步骤可选，但是为了避免每次访">
 <meta property="og:image" content="http://yoursite.com/2016/10/25/搭建blog环境/Hexo.jpg">
-<meta property="og:updated_time" content="2017-09-09T02:39:36.000Z">
+<meta property="og:updated_time" content="2017-09-28T11:13:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下使用Hexo和Github搭建静态博客 | AllenTancy">
 <meta name="twitter:description" content="系统环境:
@@ -257,11 +257,11 @@ classes that you can use:
 <pre><code>$ 3.10.8
 </code></pre><h2 id="SSH连接Github"><a href="#SSH连接Github" class="headerlink" title="SSH连接Github"></a>SSH连接Github</h2><p>  本步骤可选，但是为了避免每次访问Gighub都需要输入密码，可以选择配置SSH Key，步骤如下:</p>
 <ol>
-<li>​设置git参数：<pre><code>$ git config --global user.name &quot;Your Name&quot; 
-$ git config —global user.email &quot;Your Email&quot; 
-</code></pre>这里的用户名和邮箱不一定就是你的额GitHub账号的用户名和邮箱。</li>
-<li>生成SSH密钥<pre><code>$ ssh-keygen -t rsa -C &quot;邮箱地址&quot;
-</code></pre>可以在~/.ssh目录下可以看到id_rsa(私钥)和id_rsa.pub(公钥)两个文件</li>
+<li>​设置git参数：<br>  $ git config –global user.name “Your Name” <pre><code>  $ git config —global user.email &quot;Your Email&quot; 
+这里的用户名和邮箱不一定就是你的额GitHub账号的用户名和邮箱。
+</code></pre></li>
+<li>生成SSH密钥<br>  $ ssh-keygen -t rsa -C “邮箱地址”<pre><code>可以在~/.ssh目录下可以看到id_rsa(私钥)和id_rsa.pub(公钥)两个文件
+</code></pre></li>
 <li>添加私钥到SSH，添加公钥到GigHub界面。<pre><code>$ ssh-add id_rsa
 </code></pre>在Github–settting-key 页面添加公钥，即id_rsa.pub里面的内容(可用vim 打开查看并复制，我是用的软件 Typora 查看，建议安装一个MarkDown编辑器，以后也会用得到，推荐几个编辑器)。<br>测试是否成功<pre><code>$ ssh git@github.com
 </code></pre>出现类似提示表示成功:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ &apos;Hi Allen-Tancy/Allen-Tancy.github.io! You&apos;ve successfully authenticated, but GitHub does not provide shell access.Connection to github.com closed.&apos;</div></pre></td></tr></table></figure>
@@ -302,8 +302,8 @@ $ hexo deploy   #将更新后的博客上传至你的github空间。
 <li>scripts:扩展脚本目录，这里可以自定义一些javascript脚本</li>
 <li>node_modules安装的一些Hexo工具，每个都会在这里建立一个文件夹，并以hexo开头</li>
 <li><p>source：文章源码目录，该目录下的Markdown和html文件均会被hexo处理。该页面对应的repo的根目录,404文件，，favicon.ico文件，CNAME文件都应该放在这里，该目录下课新建页面目录。</p>
-<pre><code>_drafts: 草稿文章
-_posts:  发布文章 
+<p> _drafts: 草稿文章</p>
+<pre><code>_posts:  发布文章 
 </code></pre></li>
 </ul>
 <ul>
@@ -316,6 +316,8 @@ _posts:  发布文章
 <li><a href="http://blog.csdn.net/xsckernel/article/details/8563993" target="_blank" rel="external">git使用（ssh key创建和Github的使用）</a></li>
 <li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/?utm_source=tuicool" target="_blank" rel="external">hexo你的博客</a></li>
 <li><a href="http://blog.csdn.net/xuezhisdc/article/details/53130383" target="_blank" rel="external">hexo的配置</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">hexo 官方文档</a></li>
+<li>​</li>
 </ol>
 
   </section>
