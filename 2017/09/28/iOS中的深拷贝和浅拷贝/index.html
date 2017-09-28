@@ -7,7 +7,7 @@
     
 
     <title>
-      iOS中的深拷贝和浅拷贝 | AllenTancy 
+      【转】iOS中的深拷贝和浅拷贝 | AllenTancy 
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,13 +16,41 @@
     
     
 
-    <meta property="og:type" content="article">
-<meta property="og:title" content="iOS中的深拷贝和浅拷贝 | AllenTancy">
+    <meta name="description" content="了解内存分区这里说的内存分区是说的RAM
+
+
+栈区(stack):这个一般由编译器操作，或者说是系统管理，会存一些局部变量，函数跳转时现场保护（寄存器保存于恢复），这些系统都会帮我们自动实现，无须我们干预。所以大量的局部变量，深递归，函数循环条用都可能耗尽内存而造成程序崩溃。
+
+堆区（heap）：一般有程序员管理，比如alloc申请内存，free释放内存。我们创建的对象也都放在这里。
+
+全局区（静">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】iOS中的深拷贝和浅拷贝 | AllenTancy">
 <meta property="og:url" content="http://yoursite.com/2017/09/28/iOS中的深拷贝和浅拷贝/index.html">
 <meta property="og:site_name" content="AllenTancy">
-<meta property="og:updated_time" content="2017-09-28T11:16:09.000Z">
+<meta property="og:description" content="了解内存分区这里说的内存分区是说的RAM
+
+
+栈区(stack):这个一般由编译器操作，或者说是系统管理，会存一些局部变量，函数跳转时现场保护（寄存器保存于恢复），这些系统都会帮我们自动实现，无须我们干预。所以大量的局部变量，深递归，函数循环条用都可能耗尽内存而造成程序崩溃。
+
+堆区（heap）：一般有程序员管理，比如alloc申请内存，free释放内存。我们创建的对象也都放在这里。
+
+全局区（静">
+<meta property="og:image" content="http://yoursite.com/2017/09/28/iOS中的深拷贝和浅拷贝/ram_rom.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/28/iOS中的深拷贝和浅拷贝/ram_rom.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/28/iOS中的深拷贝和浅拷贝/06.png">
+<meta property="og:updated_time" content="2017-09-28T12:28:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS中的深拷贝和浅拷贝 | AllenTancy">
+<meta name="twitter:title" content="【转】iOS中的深拷贝和浅拷贝 | AllenTancy">
+<meta name="twitter:description" content="了解内存分区这里说的内存分区是说的RAM
+
+
+栈区(stack):这个一般由编译器操作，或者说是系统管理，会存一些局部变量，函数跳转时现场保护（寄存器保存于恢复），这些系统都会帮我们自动实现，无须我们干预。所以大量的局部变量，深递归，函数循环条用都可能耗尽内存而造成程序崩溃。
+
+堆区（heap）：一般有程序员管理，比如alloc申请内存，free释放内存。我们创建的对象也都放在这里。
+
+全局区（静">
+<meta name="twitter:image" content="http://yoursite.com/2017/09/28/iOS中的深拷贝和浅拷贝/ram_rom.png">
     
     
     
@@ -180,7 +208,7 @@ classes that you can use:
 
   <header class="post-header">
     
-    <h1 class="post-title">iOS中的深拷贝和浅拷贝</h1>
+    <h1 class="post-title">【转】iOS中的深拷贝和浅拷贝</h1>
 
     
 
@@ -206,7 +234,37 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    
+    <h2 id="了解内存分区"><a href="#了解内存分区" class="headerlink" title="了解内存分区"></a>了解内存分区</h2><p>这里说的内存分区是说的RAM</p>
+<blockquote>
+<ul>
+<li><p>栈区(stack):这个一般由编译器操作，或者说是系统管理，会存一些局部变量，函数跳转时现场保护（寄存器保存于恢复），这些系统都会帮我们自动实现，无须我们干预。所以大量的局部变量，深递归，函数循环条用都可能耗尽内存而造成程序崩溃。</p>
+</li>
+<li><p>堆区（heap）：一般有程序员管理，比如alloc申请内存，free释放内存。我们创建的对象也都放在这里。</p>
+</li>
+<li><p>全局区（静态区static）:全局变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域，未初始化的全局变量和未初始化变量在相邻的另一块区域。程序结束后有系统释放。注意：在嵌入式系统中的全局区又可以分为未初始化全局区，.bss段和初始化全局区：data段。举例：int a;未初始化的。int a = 10；已初始化的。</p>
+</li>
+<li><p>常量区：常量字符串就是放在这里的。还有const常量</p>
+</li>
+<li><p>代码区：存放代码，APP程序会拷贝到这里，程序不是在ROM里面存储吗？看下面的举例：</p>
+<img src="/2017/09/28/iOS中的深拷贝和浅拷贝/ram_rom.png" alt="hexo的结构" title="hexo的结构">
+</li>
+</ul>
+</blockquote>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><img src="/2017/09/28/iOS中的深拷贝和浅拷贝/ram_rom.png" alt="内存布局" title="内存布局">
+<p>objc1 是定义在函数外部的全局变量，处于全局区；objc2是定义在函数内的额局部变量，处于栈区。它们都指向了处于堆区的对象。</p>
+<p><strong>objc1与objc2是指针，它们指向的对象是内容，那么现在再看深浅拷贝的现象，或者说执行的结果，浅拷贝都指向一个对象内容，互不影响</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">## 返回值的一些基本规则</div><div class="line"></div><div class="line">无论是集合对象还是非集合对象，在收到copy和mutableCopy消息时，都遵守规则：</div><div class="line"></div><div class="line">&gt; - copy返回 immutable对象</div><div class="line"></div><div class="line">&gt; - mutableCopy返回mutable对象</div><div class="line"></div><div class="line">不可变与可变对象的转变：</div><div class="line"></div><div class="line">&gt; - 不可变—&gt; 可变对象的转换:     &lt;不可变对象&gt;.mutableCopy</div><div class="line">&gt; - 可变对象—&gt; 不可变对象的转换: &lt;可变对象&gt;.copy</div><div class="line"></div><div class="line">## 集合拷贝</div><div class="line"></div><div class="line">系统提供的集合类型，比如字典，数组，NSSet等集合类型内存基本都是如下结构：集合内存结构图：</div><div class="line"></div><div class="line">&#123;% asset_img 03.png 集合内存结构图 %&#125;</div><div class="line"></div><div class="line">我们可以上面代码（代码处于方法内）做个分析，加深对内存的理解。`@&quot;123&quot;、@&quot;456&quot;`是const属性，因此处于常量区，指针`str1、str2、arr`局部变量指针处于栈区,`@[]`数组内容存放位置处于堆区，数组里面的内容存放的是指针str1与str2，当然处于堆区</div><div class="line"></div><div class="line">其实`arr = @[str1,str2]`相当于`[arr addObject:str1];[arr addObject:str2];`，数组里面有两个强指针指向了对象`@&quot;123&quot;`与`@&quot;456&quot;`。</div><div class="line"></div><div class="line">&gt; 图中只是字符串是常量所以在常量区，如果他们是NSDate、UIView等等则会处于堆区</div><div class="line"></div><div class="line">下面的分析也是基于三种程度的拷贝，记为CopyLevel，拷贝层次，简写CL1、CL2、CL3</div><div class="line"></div><div class="line">- CL1：arr数组指针，如果只发生这层拷贝，则和非集合对象一样，是浅拷贝</div><div class="line">- CL2：arr数组指针指向的的内容，即存储的对象指针。发生本层拷贝，从非集合角度来说已经发生了内容拷贝，即深拷贝。但从集合角度来说，还是浅拷贝。</div><div class="line">- CL3：arr数组里面存储的指针指向的内容，如果发生本层拷贝，可以叫做集合的单层深拷贝。</div><div class="line"></div><div class="line">**毫无疑问，CL1是肯定会进行的。重点就在于CL2于CL3.**</div><div class="line"></div><div class="line">## 不可变集合的copy与mutableCopy</div><div class="line"></div><div class="line">下面代码，不可变集合arrM1的copy与mutableCopy。arrM2：mutableCopy，arr：copy</div><div class="line"></div><div class="line">&#123;% asset_img 04.png 不可变集合的copy和mutableCopy%&#125;</div><div class="line"></div><div class="line">- 根据第一行打印结果：arrM2和arr都进行CL1拷贝</div><div class="line">- 第二行打印结果：arrM2与arrM1结果不同，说明进行了数组拷贝；arr与arrM1结果相同，说明没有，进行数组拷贝</div><div class="line">- 第三行打印结果：都相同，说明指向的内容没有发生拷贝</div><div class="line"></div><div class="line">## 可变集合的copy与mutableCopy</div><div class="line"></div><div class="line">下面代码，可变集合arrM1的copy与mutableCopy。arrM2：mutableCopy，arr：copy</div><div class="line"></div><div class="line">&#123;% asset_img 05.png 可变集合的copy与mutableCopy%&#125;</div><div class="line"></div><div class="line">- 根据第一行打印结果：arrM2和arr都进行CL1拷贝</div><div class="line">- 第二行打印结果：结果均不同，说明都进行了数组拷贝；</div><div class="line">- 第三行打印结果：都相同，说明指向的内容没有发生拷贝</div><div class="line"></div><div class="line">## 一般结论</div><div class="line"></div><div class="line">我们知道，对于非集合对象，有如下结论：</div></pre></td></tr></table></figure>
+<p>// 不可变，线程安全<br>[immutableObject copy] // 浅复制<br>[immutableObject mutableCopy] // 深复制，对于集合则是只拷⻉贝数组的内容，数组的内容是指针，而指针的内容不会被拷⻉</p>
+<p>// 可变对象，线程不安全<br>[mutableObject copy] //深复制，对于集合则是只拷⻉贝数组的内容，数组的内容是指针，而指针的内容不会被拷⻉<br>[mutableObject mutableCopy] //深复制，对于集合则是只拷⻉贝数组的内容，数组的内容是指针，而指针的内容不会被拷⻉<br>```</p>
+<h2 id="集合的单层深拷贝，CL3层的拷贝-one-level-deep-copy"><a href="#集合的单层深拷贝，CL3层的拷贝-one-level-deep-copy" class="headerlink" title="集合的单层深拷贝，CL3层的拷贝(one-level-deep copy)"></a>集合的单层深拷贝，CL3层的拷贝(one-level-deep copy)</h2><p>我们需要使用<code>- (instancetype)initWithArray:(NSArray&lt;ObjectType&gt; *)array copyItems:(BOOL)flag;</code>方法，且flag为YES。</p>
+<img src="/2017/09/28/iOS中的深拷贝和浅拷贝/06.png" alt="集合CL3深拷贝" title="集合CL3深拷贝">
+<p>可以看到，三行打印结果都不一样，即发生了CL3层的拷贝。</p>
+<p>此方法执行后，arrM1集合里的每个对象都会收到 copyWithZone: 消息。如果集合里的对象遵循 NSCopying 协议，那么对象就会被深拷贝到新的集合，如果没有遵循就直接崩溃了。</p>
+<p>等一等，好像有另一个问题：此方法只是会给集合的每个对象发送<code>copyWithZone:</code>方法，那么对于不可变对象，<code>copyWithZone:</code>的执行还是浅拷贝。读者大概也注意到了，图中示例代码，arrM1数组存的也是可变对象dict1，所以有CL3层的拷贝。那如果arrM1存的不是可变对象呢？结果就是没有CL3层的拷贝，大家可以用代码测试下！</p>
+<p>为啥叫单层深复制呢？ 因为它只给arrM1数组存的对象发送了<code>copyWithZone:</code>方法，而没有对dict1发送<code>copyWithZone:</code>方法，dict1也是集合，它里面也存放着对象呢。。。即集合里面存放的集合。。。好绕，哈哈</p>
+<p>另外，除了此方法，集合的解档归档，也是可以实现单层深拷贝的。</p>
+<p>转自 <a href="http://www.cnblogs.com/mddblog/p/7236138.html#_label0" target="_blank" rel="external">集合深浅拷贝</a></p>
+
   </section>
 
   <section class="post-comments">
