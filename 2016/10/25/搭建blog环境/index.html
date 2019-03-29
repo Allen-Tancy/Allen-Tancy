@@ -45,7 +45,7 @@ $ npm -v
 $ 3.10.8
 SSH连接Github  本步骤可选，但是为了避免每次访">
 <meta property="og:image" content="http://yoursite.com/2016/10/25/搭建blog环境/Hexo.jpg">
-<meta property="og:updated_time" content="2017-09-28T11:16:04.000Z">
+<meta property="og:updated_time" content="2019-03-29T12:22:21.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下使用Hexo和Github搭建静态博客 | AllenTancy">
 <meta name="twitter:description" content="系统环境:
@@ -255,16 +255,18 @@ classes that you can use:
 <pre><code>$ npm -v
 </code></pre><p>显示版本号：</p>
 <pre><code>$ 3.10.8
-</code></pre><h2 id="SSH连接Github"><a href="#SSH连接Github" class="headerlink" title="SSH连接Github"></a>SSH连接Github</h2><p>  本步骤可选，但是为了避免每次访问Gighub都需要输入密码，可以选择配置SSH Key，步骤如下:</p>
+</code></pre><h2 id="SSH连接Github"><a href="#SSH连接Github" class="headerlink" title="SSH连接Github"></a>SSH连接Github</h2><p>  本步骤可选，但是为了避免每次访问Github都需要输入密码，可以选择配置SSH Key，步骤如下:</p>
 <ol>
-<li>​设置git参数：<br>  $ git config –global user.name “Your Name” <pre><code>  $ git config —global user.email &quot;Your Email&quot; 
-这里的用户名和邮箱不一定就是你的额GitHub账号的用户名和邮箱。
+<li>设置git参数：<br>  $ git config –global user.name “Your Name”<br>  $ git config —global user.email “Your Email” <pre><code>这里的用户名和邮箱不一定就是你的额GitHub账号的用户名和邮箱。
 </code></pre></li>
 <li>生成SSH密钥<br>  $ ssh-keygen -t rsa -C “邮箱地址”<pre><code>可以在~/.ssh目录下可以看到id_rsa(私钥)和id_rsa.pub(公钥)两个文件
 </code></pre></li>
-<li>添加私钥到SSH，添加公钥到GigHub界面。<pre><code>$ ssh-add id_rsa
-</code></pre>在Github–settting-key 页面添加公钥，即id_rsa.pub里面的内容(可用vim 打开查看并复制，我是用的软件 Typora 查看，建议安装一个MarkDown编辑器，以后也会用得到，推荐几个编辑器)。<br>测试是否成功<pre><code>$ ssh git@github.com
-</code></pre>出现类似提示表示成功:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ &apos;Hi Allen-Tancy/Allen-Tancy.github.io! You&apos;ve successfully authenticated, but GitHub does not provide shell access.Connection to github.com closed.&apos;</div></pre></td></tr></table></figure>
+<li><p>添加私钥到SSH，添加公钥到GigHub界面。</p>
+<pre><code>$ ssh-add id_rsa
+</code></pre><p>在Github–settting-key 页面添加公钥，即id_rsa.pub里面的内容(可用vim 打开查看并复制，我是用的软件 Typora 查看，建议安装一个MarkDown编辑器，以后也会用得到，推荐这个编辑器)。<br>测试是否成功</p>
+<pre><code>$ ssh git@github.com
+</code></pre><p>出现类似提示表示成功:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ &apos;Hi Allen-Tancy/Allen-Tancy.github.io! You&apos;ve successfully authenticated, but GitHub does not provide shell access.Connection to github.com closed.&apos;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="基本Hexo的搭建"><a href="#基本Hexo的搭建" class="headerlink" title="基本Hexo的搭建"></a>基本Hexo的搭建</h2><p>cd命令到你要部署的文件目录，在终端下运行一下命令:</p>
